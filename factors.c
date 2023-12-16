@@ -13,7 +13,7 @@
   #endif
 #endif
 
-#include <Python.h>
+#include "Python.h"
 #ifndef Py_PYTHON_H
     #error Python headers needed to compile C extensions, please install development version of Python.
 #elif PY_VERSION_HEX < 0x02070000 || (0x03000000 <= PY_VERSION_HEX && PY_VERSION_HEX < 0x03030000)
@@ -1181,8 +1181,8 @@ static CYTHON_INLINE float __PYX_NAN() {
   #endif
 #endif
 
-#define __PYX_HAVE__rsa
-#define __PYX_HAVE_API__rsa
+#define __PYX_HAVE__factors
+#define __PYX_HAVE_API__factors
 /* Early includes */
 #ifdef _OPENMP
 #include <omp.h>
@@ -1449,7 +1449,7 @@ static const char *__pyx_filename;
 /* #### Code section: filename_table ### */
 
 static const char *__pyx_f[] = {
-  "rsa.py",
+  "factors.py",
 };
 /* #### Code section: utility_code_proto_before_types ### */
 /* ForceInitThreads.proto */
@@ -1929,13 +1929,6 @@ static PyObject *__Pyx__GetModuleGlobalName(PyObject *name, PY_UINT64_T *dict_ve
 static CYTHON_INLINE PyObject *__Pyx__GetModuleGlobalName(PyObject *name);
 #endif
 
-/* StrEquals.proto */
-#if PY_MAJOR_VERSION >= 3
-#define __Pyx_PyString_Equals __Pyx_PyUnicode_Equals
-#else
-#define __Pyx_PyString_Equals __Pyx_PyBytes_Equals
-#endif
-
 /* GetItemInt.proto */
 #define __Pyx_GetItemInt(o, i, type, is_signed, to_py_func, is_list, wraparound, boundscheck)\
     (__Pyx_fits_Py_ssize_t(i, type, is_signed) ?\
@@ -2004,6 +1997,9 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_FastCallDict(PyObject *func, PyObj
 
 /* PyObjectCallOneArg.proto */
 static CYTHON_INLINE PyObject* __Pyx_PyObject_CallOneArg(PyObject *func, PyObject *arg);
+
+/* PyObjectCallNoArg.proto */
+static CYTHON_INLINE PyObject* __Pyx_PyObject_CallNoArg(PyObject *func);
 
 /* CLineInTraceback.proto */
 #ifdef CYTHON_CLINE_IN_TRACEBACK
@@ -2089,14 +2085,14 @@ static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
 /* #### Code section: module_declarations ### */
 
-/* Module declarations from "rsa" */
+/* Module declarations from "factors" */
 /* #### Code section: typeinfo ### */
 /* #### Code section: before_global_var ### */
-#define __Pyx_MODULE_NAME "rsa"
-extern int __pyx_module_is_main_rsa;
-int __pyx_module_is_main_rsa = 0;
+#define __Pyx_MODULE_NAME "factors"
+extern int __pyx_module_is_main_factors;
+int __pyx_module_is_main_factors = 0;
 
-/* Implementation of "rsa" */
+/* Implementation of "factors" */
 /* #### Code section: global_var ### */
 static PyObject *__pyx_builtin_print;
 static PyObject *__pyx_builtin_exit;
@@ -2109,7 +2105,6 @@ static const char __pyx_k_j[] = "j";
 static const char __pyx_k_r[] = "r";
 static const char __pyx_k__5[] = "{}={}*{}";
 static const char __pyx_k__6[] = "?";
-static const char __pyx_k_rsa[] = "rsa";
 static const char __pyx_k_sys[] = "sys";
 static const char __pyx_k_argv[] = "argv";
 static const char __pyx_k_exit[] = "exit";
@@ -2120,6 +2115,7 @@ static const char __pyx_k_math[] = "math";
 static const char __pyx_k_name[] = "__name__";
 static const char __pyx_k_open[] = "open";
 static const char __pyx_k_test[] = "__test__";
+static const char __pyx_k_close[] = "close";
 static const char __pyx_k_prime[] = "prime";
 static const char __pyx_k_print[] = "print";
 static const char __pyx_k_range[] = "range";
@@ -2127,16 +2123,17 @@ static const char __pyx_k_format[] = "format";
 static const char __pyx_k_import[] = "__import__";
 static const char __pyx_k_number[] = "number";
 static const char __pyx_k_primes[] = "primes";
-static const char __pyx_k_rsa_py[] = "rsa.py";
+static const char __pyx_k_factors[] = "factors";
 static const char __pyx_k_intline[] = "intline";
 static const char __pyx_k_primelst[] = "primelst";
 static const char __pyx_k_primenums[] = "primenums";
 static const char __pyx_k_Usage_file[] = "Usage: {} <file>";
+static const char __pyx_k_factors_py[] = "factors.py";
 static const char __pyx_k_is_coroutine[] = "_is_coroutine";
 static const char __pyx_k_asyncio_coroutines[] = "asyncio.coroutines";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
 /* #### Code section: decls ### */
-static PyObject *__pyx_pf_3rsa_primes(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_number); /* proto */
+static PyObject *__pyx_pf_7factors_primes(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_number); /* proto */
 /* #### Code section: late_includes ### */
 /* #### Code section: module_state ### */
 typedef struct {
@@ -2167,13 +2164,16 @@ typedef struct {
   #if CYTHON_USE_MODULE_STATE
   #endif
   PyObject *__pyx_n_s_;
-  PyObject *__pyx_kp_s_Usage_file;
-  PyObject *__pyx_kp_s__5;
+  PyObject *__pyx_kp_u_Usage_file;
+  PyObject *__pyx_kp_u__5;
   PyObject *__pyx_n_s__6;
   PyObject *__pyx_n_s_argv;
   PyObject *__pyx_n_s_asyncio_coroutines;
   PyObject *__pyx_n_s_cline_in_traceback;
+  PyObject *__pyx_n_s_close;
   PyObject *__pyx_n_s_exit;
+  PyObject *__pyx_n_s_factors;
+  PyObject *__pyx_kp_s_factors_py;
   PyObject *__pyx_n_s_file;
   PyObject *__pyx_n_s_format;
   PyObject *__pyx_n_s_i;
@@ -2183,6 +2183,7 @@ typedef struct {
   PyObject *__pyx_n_s_j;
   PyObject *__pyx_n_s_line;
   PyObject *__pyx_n_s_main;
+  PyObject *__pyx_n_u_main;
   PyObject *__pyx_n_s_math;
   PyObject *__pyx_n_s_name;
   PyObject *__pyx_n_s_number;
@@ -2192,10 +2193,8 @@ typedef struct {
   PyObject *__pyx_n_s_primenums;
   PyObject *__pyx_n_s_primes;
   PyObject *__pyx_n_s_print;
-  PyObject *__pyx_n_s_r;
+  PyObject *__pyx_n_u_r;
   PyObject *__pyx_n_s_range;
-  PyObject *__pyx_n_s_rsa;
-  PyObject *__pyx_kp_s_rsa_py;
   PyObject *__pyx_n_s_sys;
   PyObject *__pyx_n_s_test;
   PyObject *__pyx_int_0;
@@ -2248,13 +2247,16 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_FusedFunctionType);
   #endif
   Py_CLEAR(clear_module_state->__pyx_n_s_);
-  Py_CLEAR(clear_module_state->__pyx_kp_s_Usage_file);
-  Py_CLEAR(clear_module_state->__pyx_kp_s__5);
+  Py_CLEAR(clear_module_state->__pyx_kp_u_Usage_file);
+  Py_CLEAR(clear_module_state->__pyx_kp_u__5);
   Py_CLEAR(clear_module_state->__pyx_n_s__6);
   Py_CLEAR(clear_module_state->__pyx_n_s_argv);
   Py_CLEAR(clear_module_state->__pyx_n_s_asyncio_coroutines);
   Py_CLEAR(clear_module_state->__pyx_n_s_cline_in_traceback);
+  Py_CLEAR(clear_module_state->__pyx_n_s_close);
   Py_CLEAR(clear_module_state->__pyx_n_s_exit);
+  Py_CLEAR(clear_module_state->__pyx_n_s_factors);
+  Py_CLEAR(clear_module_state->__pyx_kp_s_factors_py);
   Py_CLEAR(clear_module_state->__pyx_n_s_file);
   Py_CLEAR(clear_module_state->__pyx_n_s_format);
   Py_CLEAR(clear_module_state->__pyx_n_s_i);
@@ -2264,6 +2266,7 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_j);
   Py_CLEAR(clear_module_state->__pyx_n_s_line);
   Py_CLEAR(clear_module_state->__pyx_n_s_main);
+  Py_CLEAR(clear_module_state->__pyx_n_u_main);
   Py_CLEAR(clear_module_state->__pyx_n_s_math);
   Py_CLEAR(clear_module_state->__pyx_n_s_name);
   Py_CLEAR(clear_module_state->__pyx_n_s_number);
@@ -2273,10 +2276,8 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_primenums);
   Py_CLEAR(clear_module_state->__pyx_n_s_primes);
   Py_CLEAR(clear_module_state->__pyx_n_s_print);
-  Py_CLEAR(clear_module_state->__pyx_n_s_r);
+  Py_CLEAR(clear_module_state->__pyx_n_u_r);
   Py_CLEAR(clear_module_state->__pyx_n_s_range);
-  Py_CLEAR(clear_module_state->__pyx_n_s_rsa);
-  Py_CLEAR(clear_module_state->__pyx_kp_s_rsa_py);
   Py_CLEAR(clear_module_state->__pyx_n_s_sys);
   Py_CLEAR(clear_module_state->__pyx_n_s_test);
   Py_CLEAR(clear_module_state->__pyx_int_0);
@@ -2307,13 +2308,16 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_FusedFunctionType);
   #endif
   Py_VISIT(traverse_module_state->__pyx_n_s_);
-  Py_VISIT(traverse_module_state->__pyx_kp_s_Usage_file);
-  Py_VISIT(traverse_module_state->__pyx_kp_s__5);
+  Py_VISIT(traverse_module_state->__pyx_kp_u_Usage_file);
+  Py_VISIT(traverse_module_state->__pyx_kp_u__5);
   Py_VISIT(traverse_module_state->__pyx_n_s__6);
   Py_VISIT(traverse_module_state->__pyx_n_s_argv);
   Py_VISIT(traverse_module_state->__pyx_n_s_asyncio_coroutines);
   Py_VISIT(traverse_module_state->__pyx_n_s_cline_in_traceback);
+  Py_VISIT(traverse_module_state->__pyx_n_s_close);
   Py_VISIT(traverse_module_state->__pyx_n_s_exit);
+  Py_VISIT(traverse_module_state->__pyx_n_s_factors);
+  Py_VISIT(traverse_module_state->__pyx_kp_s_factors_py);
   Py_VISIT(traverse_module_state->__pyx_n_s_file);
   Py_VISIT(traverse_module_state->__pyx_n_s_format);
   Py_VISIT(traverse_module_state->__pyx_n_s_i);
@@ -2323,6 +2327,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_j);
   Py_VISIT(traverse_module_state->__pyx_n_s_line);
   Py_VISIT(traverse_module_state->__pyx_n_s_main);
+  Py_VISIT(traverse_module_state->__pyx_n_u_main);
   Py_VISIT(traverse_module_state->__pyx_n_s_math);
   Py_VISIT(traverse_module_state->__pyx_n_s_name);
   Py_VISIT(traverse_module_state->__pyx_n_s_number);
@@ -2332,10 +2337,8 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_primenums);
   Py_VISIT(traverse_module_state->__pyx_n_s_primes);
   Py_VISIT(traverse_module_state->__pyx_n_s_print);
-  Py_VISIT(traverse_module_state->__pyx_n_s_r);
+  Py_VISIT(traverse_module_state->__pyx_n_u_r);
   Py_VISIT(traverse_module_state->__pyx_n_s_range);
-  Py_VISIT(traverse_module_state->__pyx_n_s_rsa);
-  Py_VISIT(traverse_module_state->__pyx_kp_s_rsa_py);
   Py_VISIT(traverse_module_state->__pyx_n_s_sys);
   Py_VISIT(traverse_module_state->__pyx_n_s_test);
   Py_VISIT(traverse_module_state->__pyx_int_0);
@@ -2376,13 +2379,16 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #if CYTHON_USE_MODULE_STATE
 #endif
 #define __pyx_n_s_ __pyx_mstate_global->__pyx_n_s_
-#define __pyx_kp_s_Usage_file __pyx_mstate_global->__pyx_kp_s_Usage_file
-#define __pyx_kp_s__5 __pyx_mstate_global->__pyx_kp_s__5
+#define __pyx_kp_u_Usage_file __pyx_mstate_global->__pyx_kp_u_Usage_file
+#define __pyx_kp_u__5 __pyx_mstate_global->__pyx_kp_u__5
 #define __pyx_n_s__6 __pyx_mstate_global->__pyx_n_s__6
 #define __pyx_n_s_argv __pyx_mstate_global->__pyx_n_s_argv
 #define __pyx_n_s_asyncio_coroutines __pyx_mstate_global->__pyx_n_s_asyncio_coroutines
 #define __pyx_n_s_cline_in_traceback __pyx_mstate_global->__pyx_n_s_cline_in_traceback
+#define __pyx_n_s_close __pyx_mstate_global->__pyx_n_s_close
 #define __pyx_n_s_exit __pyx_mstate_global->__pyx_n_s_exit
+#define __pyx_n_s_factors __pyx_mstate_global->__pyx_n_s_factors
+#define __pyx_kp_s_factors_py __pyx_mstate_global->__pyx_kp_s_factors_py
 #define __pyx_n_s_file __pyx_mstate_global->__pyx_n_s_file
 #define __pyx_n_s_format __pyx_mstate_global->__pyx_n_s_format
 #define __pyx_n_s_i __pyx_mstate_global->__pyx_n_s_i
@@ -2392,6 +2398,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_j __pyx_mstate_global->__pyx_n_s_j
 #define __pyx_n_s_line __pyx_mstate_global->__pyx_n_s_line
 #define __pyx_n_s_main __pyx_mstate_global->__pyx_n_s_main
+#define __pyx_n_u_main __pyx_mstate_global->__pyx_n_u_main
 #define __pyx_n_s_math __pyx_mstate_global->__pyx_n_s_math
 #define __pyx_n_s_name __pyx_mstate_global->__pyx_n_s_name
 #define __pyx_n_s_number __pyx_mstate_global->__pyx_n_s_number
@@ -2401,10 +2408,8 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_primenums __pyx_mstate_global->__pyx_n_s_primenums
 #define __pyx_n_s_primes __pyx_mstate_global->__pyx_n_s_primes
 #define __pyx_n_s_print __pyx_mstate_global->__pyx_n_s_print
-#define __pyx_n_s_r __pyx_mstate_global->__pyx_n_s_r
+#define __pyx_n_u_r __pyx_mstate_global->__pyx_n_u_r
 #define __pyx_n_s_range __pyx_mstate_global->__pyx_n_s_range
-#define __pyx_n_s_rsa __pyx_mstate_global->__pyx_n_s_rsa
-#define __pyx_kp_s_rsa_py __pyx_mstate_global->__pyx_kp_s_rsa_py
 #define __pyx_n_s_sys __pyx_mstate_global->__pyx_n_s_sys
 #define __pyx_n_s_test __pyx_mstate_global->__pyx_n_s_test
 #define __pyx_int_0 __pyx_mstate_global->__pyx_int_0
@@ -2416,7 +2421,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_codeobj__3 __pyx_mstate_global->__pyx_codeobj__3
 /* #### Code section: module_code ### */
 
-/* "rsa.py":4
+/* "factors.py":6
  * from sys import *
  * 
  * def primes(number):             # <<<<<<<<<<<<<<
@@ -2425,15 +2430,15 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3rsa_1primes(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_7factors_1primes(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_3rsa_1primes = {"primes", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3rsa_1primes, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_3rsa_1primes(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_7factors_1primes = {"primes", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_7factors_1primes, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_7factors_1primes(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -2477,12 +2482,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 4, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 6, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "primes") < 0)) __PYX_ERR(0, 4, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "primes") < 0)) __PYX_ERR(0, 6, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -2493,7 +2498,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("primes", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 4, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("primes", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 6, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -2503,11 +2508,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       __Pyx_Arg_XDECREF_FASTCALL(values[__pyx_temp]);
     }
   }
-  __Pyx_AddTraceback("rsa.primes", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("factors.primes", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_3rsa_primes(__pyx_self, __pyx_v_number);
+  __pyx_r = __pyx_pf_7factors_primes(__pyx_self, __pyx_v_number);
 
   /* function exit code */
   {
@@ -2520,7 +2525,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3rsa_primes(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_number) {
+static PyObject *__pyx_pf_7factors_primes(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_number) {
   PyObject *__pyx_v_primenums = NULL;
   PyObject *__pyx_v_i = NULL;
   int __pyx_v_prime;
@@ -2541,41 +2546,41 @@ static PyObject *__pyx_pf_3rsa_primes(CYTHON_UNUSED PyObject *__pyx_self, PyObje
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("primes", 1);
 
-  /* "rsa.py":5
+  /* "factors.py":7
  * 
  * def primes(number):
  *         primenums = []             # <<<<<<<<<<<<<<
  *         if number % 2 == 0:
  *                 primenums.append(2)
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 5, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_primenums = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "rsa.py":6
+  /* "factors.py":8
  * def primes(number):
  *         primenums = []
  *         if number % 2 == 0:             # <<<<<<<<<<<<<<
  *                 primenums.append(2)
  *         for i in range(3, number + 1, 2):
  */
-  __pyx_t_1 = __Pyx_PyInt_RemainderObjC(__pyx_v_number, __pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 6, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_RemainderObjC(__pyx_v_number, __pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = (__Pyx_PyInt_BoolEqObjC(__pyx_t_1, __pyx_int_0, 0, 0)); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 6, __pyx_L1_error)
+  __pyx_t_2 = (__Pyx_PyInt_BoolEqObjC(__pyx_t_1, __pyx_int_0, 0, 0)); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_2) {
 
-    /* "rsa.py":7
+    /* "factors.py":9
  *         primenums = []
  *         if number % 2 == 0:
  *                 primenums.append(2)             # <<<<<<<<<<<<<<
  *         for i in range(3, number + 1, 2):
  *                 if len(primenums) >= 1:
  */
-    __pyx_t_3 = __Pyx_PyList_Append(__pyx_v_primenums, __pyx_int_2); if (unlikely(__pyx_t_3 == ((int)-1))) __PYX_ERR(0, 7, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyList_Append(__pyx_v_primenums, __pyx_int_2); if (unlikely(__pyx_t_3 == ((int)-1))) __PYX_ERR(0, 9, __pyx_L1_error)
 
-    /* "rsa.py":6
+    /* "factors.py":8
  * def primes(number):
  *         primenums = []
  *         if number % 2 == 0:             # <<<<<<<<<<<<<<
@@ -2584,27 +2589,27 @@ static PyObject *__pyx_pf_3rsa_primes(CYTHON_UNUSED PyObject *__pyx_self, PyObje
  */
   }
 
-  /* "rsa.py":8
+  /* "factors.py":10
  *         if number % 2 == 0:
  *                 primenums.append(2)
  *         for i in range(3, number + 1, 2):             # <<<<<<<<<<<<<<
  *                 if len(primenums) >= 1:
  *                         return (primenums)
  */
-  __pyx_t_1 = __Pyx_PyInt_AddObjC(__pyx_v_number, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 8, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_AddObjC(__pyx_v_number, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 10, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 8, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 10, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_INCREF(__pyx_int_3);
   __Pyx_GIVEREF(__pyx_int_3);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_int_3)) __PYX_ERR(0, 8, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_int_3)) __PYX_ERR(0, 10, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_1);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_1)) __PYX_ERR(0, 8, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_1)) __PYX_ERR(0, 10, __pyx_L1_error);
   __Pyx_INCREF(__pyx_int_2);
   __Pyx_GIVEREF(__pyx_int_2);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 2, __pyx_int_2)) __PYX_ERR(0, 8, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 2, __pyx_int_2)) __PYX_ERR(0, 10, __pyx_L1_error);
   __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_range, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 8, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_range, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 10, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   if (likely(PyList_CheckExact(__pyx_t_1)) || PyTuple_CheckExact(__pyx_t_1)) {
@@ -2612,9 +2617,9 @@ static PyObject *__pyx_pf_3rsa_primes(CYTHON_UNUSED PyObject *__pyx_self, PyObje
     __pyx_t_5 = 0;
     __pyx_t_6 = NULL;
   } else {
-    __pyx_t_5 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 8, __pyx_L1_error)
+    __pyx_t_5 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 10, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_6 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_4); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 8, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_4); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 10, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   for (;;) {
@@ -2623,28 +2628,28 @@ static PyObject *__pyx_pf_3rsa_primes(CYTHON_UNUSED PyObject *__pyx_self, PyObje
         {
           Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_4);
           #if !CYTHON_ASSUME_SAFE_MACROS
-          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 8, __pyx_L1_error)
+          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 10, __pyx_L1_error)
           #endif
           if (__pyx_t_5 >= __pyx_temp) break;
         }
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_1); __pyx_t_5++; if (unlikely((0 < 0))) __PYX_ERR(0, 8, __pyx_L1_error)
+        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_1); __pyx_t_5++; if (unlikely((0 < 0))) __PYX_ERR(0, 10, __pyx_L1_error)
         #else
-        __pyx_t_1 = __Pyx_PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 8, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 10, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         #endif
       } else {
         {
           Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_4);
           #if !CYTHON_ASSUME_SAFE_MACROS
-          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 8, __pyx_L1_error)
+          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 10, __pyx_L1_error)
           #endif
           if (__pyx_t_5 >= __pyx_temp) break;
         }
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_1); __pyx_t_5++; if (unlikely((0 < 0))) __PYX_ERR(0, 8, __pyx_L1_error)
+        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_1); __pyx_t_5++; if (unlikely((0 < 0))) __PYX_ERR(0, 10, __pyx_L1_error)
         #else
-        __pyx_t_1 = __Pyx_PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 8, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 10, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         #endif
       }
@@ -2654,7 +2659,7 @@ static PyObject *__pyx_pf_3rsa_primes(CYTHON_UNUSED PyObject *__pyx_self, PyObje
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 8, __pyx_L1_error)
+          else __PYX_ERR(0, 10, __pyx_L1_error)
         }
         break;
       }
@@ -2663,18 +2668,18 @@ static PyObject *__pyx_pf_3rsa_primes(CYTHON_UNUSED PyObject *__pyx_self, PyObje
     __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "rsa.py":9
+    /* "factors.py":11
  *                 primenums.append(2)
  *         for i in range(3, number + 1, 2):
  *                 if len(primenums) >= 1:             # <<<<<<<<<<<<<<
  *                         return (primenums)
  *                 prime = False
  */
-    __pyx_t_7 = __Pyx_PyList_GET_SIZE(__pyx_v_primenums); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 9, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyList_GET_SIZE(__pyx_v_primenums); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 11, __pyx_L1_error)
     __pyx_t_2 = (__pyx_t_7 >= 1);
     if (__pyx_t_2) {
 
-      /* "rsa.py":10
+      /* "factors.py":12
  *         for i in range(3, number + 1, 2):
  *                 if len(primenums) >= 1:
  *                         return (primenums)             # <<<<<<<<<<<<<<
@@ -2687,7 +2692,7 @@ static PyObject *__pyx_pf_3rsa_primes(CYTHON_UNUSED PyObject *__pyx_self, PyObje
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       goto __pyx_L0;
 
-      /* "rsa.py":9
+      /* "factors.py":11
  *                 primenums.append(2)
  *         for i in range(3, number + 1, 2):
  *                 if len(primenums) >= 1:             # <<<<<<<<<<<<<<
@@ -2696,7 +2701,7 @@ static PyObject *__pyx_pf_3rsa_primes(CYTHON_UNUSED PyObject *__pyx_self, PyObje
  */
     }
 
-    /* "rsa.py":11
+    /* "factors.py":13
  *                 if len(primenums) >= 1:
  *                         return (primenums)
  *                 prime = False             # <<<<<<<<<<<<<<
@@ -2705,7 +2710,7 @@ static PyObject *__pyx_pf_3rsa_primes(CYTHON_UNUSED PyObject *__pyx_self, PyObje
  */
     __pyx_v_prime = 0;
 
-    /* "rsa.py":12
+    /* "factors.py":14
  *                         return (primenums)
  *                 prime = False
  *                 for j in primenums:             # <<<<<<<<<<<<<<
@@ -2718,33 +2723,33 @@ static PyObject *__pyx_pf_3rsa_primes(CYTHON_UNUSED PyObject *__pyx_self, PyObje
       {
         Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_1);
         #if !CYTHON_ASSUME_SAFE_MACROS
-        if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 12, __pyx_L1_error)
+        if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 14, __pyx_L1_error)
         #endif
         if (__pyx_t_7 >= __pyx_temp) break;
       }
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-      __pyx_t_8 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_7); __Pyx_INCREF(__pyx_t_8); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 12, __pyx_L1_error)
+      __pyx_t_8 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_7); __Pyx_INCREF(__pyx_t_8); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 14, __pyx_L1_error)
       #else
-      __pyx_t_8 = __Pyx_PySequence_ITEM(__pyx_t_1, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 12, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PySequence_ITEM(__pyx_t_1, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 14, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       #endif
       __Pyx_XDECREF_SET(__pyx_v_j, __pyx_t_8);
       __pyx_t_8 = 0;
 
-      /* "rsa.py":13
+      /* "factors.py":15
  *                 prime = False
  *                 for j in primenums:
  *                         if i % j == 0:             # <<<<<<<<<<<<<<
  *                                 prime = True
  *                                 break
  */
-      __pyx_t_8 = PyNumber_Remainder(__pyx_v_i, __pyx_v_j); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 13, __pyx_L1_error)
+      __pyx_t_8 = PyNumber_Remainder(__pyx_v_i, __pyx_v_j); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 15, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
-      __pyx_t_2 = (__Pyx_PyInt_BoolEqObjC(__pyx_t_8, __pyx_int_0, 0, 0)); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 13, __pyx_L1_error)
+      __pyx_t_2 = (__Pyx_PyInt_BoolEqObjC(__pyx_t_8, __pyx_int_0, 0, 0)); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 15, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       if (__pyx_t_2) {
 
-        /* "rsa.py":14
+        /* "factors.py":16
  *                 for j in primenums:
  *                         if i % j == 0:
  *                                 prime = True             # <<<<<<<<<<<<<<
@@ -2753,7 +2758,7 @@ static PyObject *__pyx_pf_3rsa_primes(CYTHON_UNUSED PyObject *__pyx_self, PyObje
  */
         __pyx_v_prime = 1;
 
-        /* "rsa.py":15
+        /* "factors.py":17
  *                         if i % j == 0:
  *                                 prime = True
  *                                 break             # <<<<<<<<<<<<<<
@@ -2762,7 +2767,7 @@ static PyObject *__pyx_pf_3rsa_primes(CYTHON_UNUSED PyObject *__pyx_self, PyObje
  */
         goto __pyx_L8_break;
 
-        /* "rsa.py":13
+        /* "factors.py":15
  *                 prime = False
  *                 for j in primenums:
  *                         if i % j == 0:             # <<<<<<<<<<<<<<
@@ -2771,7 +2776,7 @@ static PyObject *__pyx_pf_3rsa_primes(CYTHON_UNUSED PyObject *__pyx_self, PyObje
  */
       }
 
-      /* "rsa.py":12
+      /* "factors.py":14
  *                         return (primenums)
  *                 prime = False
  *                 for j in primenums:             # <<<<<<<<<<<<<<
@@ -2786,7 +2791,7 @@ static PyObject *__pyx_pf_3rsa_primes(CYTHON_UNUSED PyObject *__pyx_self, PyObje
     goto __pyx_L10_for_end;
     __pyx_L10_for_end:;
 
-    /* "rsa.py":16
+    /* "factors.py":18
  *                                 prime = True
  *                                 break
  *                 if prime == False and number % i == 0:             # <<<<<<<<<<<<<<
@@ -2799,24 +2804,24 @@ static PyObject *__pyx_pf_3rsa_primes(CYTHON_UNUSED PyObject *__pyx_self, PyObje
       __pyx_t_2 = __pyx_t_9;
       goto __pyx_L12_bool_binop_done;
     }
-    __pyx_t_1 = PyNumber_Remainder(__pyx_v_number, __pyx_v_i); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 16, __pyx_L1_error)
+    __pyx_t_1 = PyNumber_Remainder(__pyx_v_number, __pyx_v_i); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 18, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_9 = (__Pyx_PyInt_BoolEqObjC(__pyx_t_1, __pyx_int_0, 0, 0)); if (unlikely((__pyx_t_9 < 0))) __PYX_ERR(0, 16, __pyx_L1_error)
+    __pyx_t_9 = (__Pyx_PyInt_BoolEqObjC(__pyx_t_1, __pyx_int_0, 0, 0)); if (unlikely((__pyx_t_9 < 0))) __PYX_ERR(0, 18, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_2 = __pyx_t_9;
     __pyx_L12_bool_binop_done:;
     if (__pyx_t_2) {
 
-      /* "rsa.py":17
+      /* "factors.py":19
  *                                 break
  *                 if prime == False and number % i == 0:
  *                         primenums.append(i)             # <<<<<<<<<<<<<<
  *         return (primenums)
  * 
  */
-      __pyx_t_3 = __Pyx_PyList_Append(__pyx_v_primenums, __pyx_v_i); if (unlikely(__pyx_t_3 == ((int)-1))) __PYX_ERR(0, 17, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyList_Append(__pyx_v_primenums, __pyx_v_i); if (unlikely(__pyx_t_3 == ((int)-1))) __PYX_ERR(0, 19, __pyx_L1_error)
 
-      /* "rsa.py":16
+      /* "factors.py":18
  *                                 prime = True
  *                                 break
  *                 if prime == False and number % i == 0:             # <<<<<<<<<<<<<<
@@ -2825,7 +2830,7 @@ static PyObject *__pyx_pf_3rsa_primes(CYTHON_UNUSED PyObject *__pyx_self, PyObje
  */
     }
 
-    /* "rsa.py":8
+    /* "factors.py":10
  *         if number % 2 == 0:
  *                 primenums.append(2)
  *         for i in range(3, number + 1, 2):             # <<<<<<<<<<<<<<
@@ -2835,7 +2840,7 @@ static PyObject *__pyx_pf_3rsa_primes(CYTHON_UNUSED PyObject *__pyx_self, PyObje
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "rsa.py":18
+  /* "factors.py":20
  *                 if prime == False and number % i == 0:
  *                         primenums.append(i)
  *         return (primenums)             # <<<<<<<<<<<<<<
@@ -2847,7 +2852,7 @@ static PyObject *__pyx_pf_3rsa_primes(CYTHON_UNUSED PyObject *__pyx_self, PyObje
   __pyx_r = __pyx_v_primenums;
   goto __pyx_L0;
 
-  /* "rsa.py":4
+  /* "factors.py":6
  * from sys import *
  * 
  * def primes(number):             # <<<<<<<<<<<<<<
@@ -2860,7 +2865,7 @@ static PyObject *__pyx_pf_3rsa_primes(CYTHON_UNUSED PyObject *__pyx_self, PyObje
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_8);
-  __Pyx_AddTraceback("rsa.primes", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("factors.primes", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_primenums);
@@ -3018,13 +3023,16 @@ bad:
 static int __Pyx_CreateStringTabAndInitStrings(void) {
   __Pyx_StringTabEntry __pyx_string_tab[] = {
     {&__pyx_n_s_, __pyx_k_, sizeof(__pyx_k_), 0, 0, 1, 1},
-    {&__pyx_kp_s_Usage_file, __pyx_k_Usage_file, sizeof(__pyx_k_Usage_file), 0, 0, 1, 0},
-    {&__pyx_kp_s__5, __pyx_k__5, sizeof(__pyx_k__5), 0, 0, 1, 0},
+    {&__pyx_kp_u_Usage_file, __pyx_k_Usage_file, sizeof(__pyx_k_Usage_file), 0, 1, 0, 0},
+    {&__pyx_kp_u__5, __pyx_k__5, sizeof(__pyx_k__5), 0, 1, 0, 0},
     {&__pyx_n_s__6, __pyx_k__6, sizeof(__pyx_k__6), 0, 0, 1, 1},
     {&__pyx_n_s_argv, __pyx_k_argv, sizeof(__pyx_k_argv), 0, 0, 1, 1},
     {&__pyx_n_s_asyncio_coroutines, __pyx_k_asyncio_coroutines, sizeof(__pyx_k_asyncio_coroutines), 0, 0, 1, 1},
     {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
+    {&__pyx_n_s_close, __pyx_k_close, sizeof(__pyx_k_close), 0, 0, 1, 1},
     {&__pyx_n_s_exit, __pyx_k_exit, sizeof(__pyx_k_exit), 0, 0, 1, 1},
+    {&__pyx_n_s_factors, __pyx_k_factors, sizeof(__pyx_k_factors), 0, 0, 1, 1},
+    {&__pyx_kp_s_factors_py, __pyx_k_factors_py, sizeof(__pyx_k_factors_py), 0, 0, 1, 0},
     {&__pyx_n_s_file, __pyx_k_file, sizeof(__pyx_k_file), 0, 0, 1, 1},
     {&__pyx_n_s_format, __pyx_k_format, sizeof(__pyx_k_format), 0, 0, 1, 1},
     {&__pyx_n_s_i, __pyx_k_i, sizeof(__pyx_k_i), 0, 0, 1, 1},
@@ -3034,6 +3042,7 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_s_j, __pyx_k_j, sizeof(__pyx_k_j), 0, 0, 1, 1},
     {&__pyx_n_s_line, __pyx_k_line, sizeof(__pyx_k_line), 0, 0, 1, 1},
     {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
+    {&__pyx_n_u_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 1, 0, 1},
     {&__pyx_n_s_math, __pyx_k_math, sizeof(__pyx_k_math), 0, 0, 1, 1},
     {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
     {&__pyx_n_s_number, __pyx_k_number, sizeof(__pyx_k_number), 0, 0, 1, 1},
@@ -3043,10 +3052,8 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_s_primenums, __pyx_k_primenums, sizeof(__pyx_k_primenums), 0, 0, 1, 1},
     {&__pyx_n_s_primes, __pyx_k_primes, sizeof(__pyx_k_primes), 0, 0, 1, 1},
     {&__pyx_n_s_print, __pyx_k_print, sizeof(__pyx_k_print), 0, 0, 1, 1},
-    {&__pyx_n_s_r, __pyx_k_r, sizeof(__pyx_k_r), 0, 0, 1, 1},
+    {&__pyx_n_u_r, __pyx_k_r, sizeof(__pyx_k_r), 0, 1, 0, 1},
     {&__pyx_n_s_range, __pyx_k_range, sizeof(__pyx_k_range), 0, 0, 1, 1},
-    {&__pyx_n_s_rsa, __pyx_k_rsa, sizeof(__pyx_k_rsa), 0, 0, 1, 1},
-    {&__pyx_kp_s_rsa_py, __pyx_k_rsa_py, sizeof(__pyx_k_rsa_py), 0, 0, 1, 0},
     {&__pyx_n_s_sys, __pyx_k_sys, sizeof(__pyx_k_sys), 0, 0, 1, 1},
     {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
     {0, 0, 0, 0, 0, 0, 0}
@@ -3055,10 +3062,10 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
 }
 /* #### Code section: cached_builtins ### */
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_print = __Pyx_GetBuiltinName(__pyx_n_s_print); if (!__pyx_builtin_print) __PYX_ERR(0, 22, __pyx_L1_error)
-  __pyx_builtin_exit = __Pyx_GetBuiltinName(__pyx_n_s_exit); if (!__pyx_builtin_exit) __PYX_ERR(0, 23, __pyx_L1_error)
-  __pyx_builtin_open = __Pyx_GetBuiltinName(__pyx_n_s_open); if (!__pyx_builtin_open) __PYX_ERR(0, 24, __pyx_L1_error)
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 8, __pyx_L1_error)
+  __pyx_builtin_print = __Pyx_GetBuiltinName(__pyx_n_s_print); if (!__pyx_builtin_print) __PYX_ERR(0, 24, __pyx_L1_error)
+  __pyx_builtin_exit = __Pyx_GetBuiltinName(__pyx_n_s_exit); if (!__pyx_builtin_exit) __PYX_ERR(0, 25, __pyx_L1_error)
+  __pyx_builtin_open = __Pyx_GetBuiltinName(__pyx_n_s_open); if (!__pyx_builtin_open) __PYX_ERR(0, 26, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 10, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -3069,26 +3076,26 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "rsa.py":4
+  /* "factors.py":6
  * from sys import *
  * 
  * def primes(number):             # <<<<<<<<<<<<<<
  *         primenums = []
  *         if number % 2 == 0:
  */
-  __pyx_tuple__2 = PyTuple_Pack(5, __pyx_n_s_number, __pyx_n_s_primenums, __pyx_n_s_i, __pyx_n_s_prime, __pyx_n_s_j); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 4, __pyx_L1_error)
+  __pyx_tuple__2 = PyTuple_Pack(5, __pyx_n_s_number, __pyx_n_s_primenums, __pyx_n_s_i, __pyx_n_s_prime, __pyx_n_s_j); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 6, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
-  __pyx_codeobj__3 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__2, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_rsa_py, __pyx_n_s_primes, 4, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__3)) __PYX_ERR(0, 4, __pyx_L1_error)
+  __pyx_codeobj__3 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__2, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_factors_py, __pyx_n_s_primes, 6, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__3)) __PYX_ERR(0, 6, __pyx_L1_error)
 
-  /* "rsa.py":23
+  /* "factors.py":25
  *         if (len(argv) != 2):
- *             print("Usage: {} <file>".format(argv[0]))
- *             exit(1)             # <<<<<<<<<<<<<<
- *         file = open(argv[1], "r")
+ *                 print("Usage: {} <file>".format(argv[0]))
+ *                 exit(1)             # <<<<<<<<<<<<<<
+ *         file = open(argv[1], 'r')
  *         for line in file:
  */
-  __pyx_tuple__4 = PyTuple_Pack(1, __pyx_int_1); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(0, 23, __pyx_L1_error)
+  __pyx_tuple__4 = PyTuple_Pack(1, __pyx_int_1); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(0, 25, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__4);
   __Pyx_GIVEREF(__pyx_tuple__4);
   __Pyx_RefNannyFinishContext();
@@ -3184,10 +3191,10 @@ static int __Pyx_modinit_function_import_code(void) {
 #if PY_MAJOR_VERSION >= 3
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 static PyObject* __pyx_pymod_create(PyObject *spec, PyModuleDef *def); /*proto*/
-static int __pyx_pymod_exec_rsa(PyObject* module); /*proto*/
+static int __pyx_pymod_exec_factors(PyObject* module); /*proto*/
 static PyModuleDef_Slot __pyx_moduledef_slots[] = {
   {Py_mod_create, (void*)__pyx_pymod_create},
-  {Py_mod_exec, (void*)__pyx_pymod_exec_rsa},
+  {Py_mod_exec, (void*)__pyx_pymod_exec_factors},
   {0, NULL}
 };
 #endif
@@ -3200,7 +3207,7 @@ namespace {
   #endif
   {
       PyModuleDef_HEAD_INIT,
-      "rsa",
+      "factors",
       0, /* m_doc */
     #if CYTHON_PEP489_MULTI_PHASE_INIT
       0, /* m_size */
@@ -3248,11 +3255,11 @@ namespace {
 
 
 #if PY_MAJOR_VERSION < 3
-__Pyx_PyMODINIT_FUNC initrsa(void) CYTHON_SMALL_CODE; /*proto*/
-__Pyx_PyMODINIT_FUNC initrsa(void)
+__Pyx_PyMODINIT_FUNC initfactors(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC initfactors(void)
 #else
-__Pyx_PyMODINIT_FUNC PyInit_rsa(void) CYTHON_SMALL_CODE; /*proto*/
-__Pyx_PyMODINIT_FUNC PyInit_rsa(void)
+__Pyx_PyMODINIT_FUNC PyInit_factors(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC PyInit_factors(void)
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 {
   return PyModuleDef_Init(&__pyx_moduledef);
@@ -3333,7 +3340,7 @@ bad:
 }
 
 
-static CYTHON_SMALL_CODE int __pyx_pymod_exec_rsa(PyObject *__pyx_pyinit_module)
+static CYTHON_SMALL_CODE int __pyx_pymod_exec_factors(PyObject *__pyx_pyinit_module)
 #endif
 #endif
 {
@@ -3360,7 +3367,7 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_rsa(PyObject *__pyx_pyinit_module)
   #if CYTHON_PEP489_MULTI_PHASE_INIT
   if (__pyx_m) {
     if (__pyx_m == __pyx_pyinit_module) return 0;
-    PyErr_SetString(PyExc_RuntimeError, "Module 'rsa' has already been imported. Re-initialisation is not supported.");
+    PyErr_SetString(PyExc_RuntimeError, "Module 'factors' has already been imported. Re-initialisation is not supported.");
     return -1;
   }
   #elif PY_MAJOR_VERSION >= 3
@@ -3372,13 +3379,13 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_rsa(PyObject *__pyx_pyinit_module)
   Py_INCREF(__pyx_m);
   #else
   #if PY_MAJOR_VERSION < 3
-  __pyx_m = Py_InitModule4("rsa", __pyx_methods, 0, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
+  __pyx_m = Py_InitModule4("factors", __pyx_methods, 0, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
   if (unlikely(!__pyx_m)) __PYX_ERR(0, 1, __pyx_L1_error)
   #elif CYTHON_USE_MODULE_STATE
   __pyx_t_1 = PyModule_Create(&__pyx_moduledef); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   {
     int add_module_result = PyState_AddModule(__pyx_t_1, &__pyx_moduledef);
-    __pyx_t_1 = 0; /* transfer ownership from __pyx_t_1 to rsa pseudovariable */
+    __pyx_t_1 = 0; /* transfer ownership from __pyx_t_1 to factors pseudovariable */
     if (unlikely((add_module_result < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
     pystate_addmodule_run = 1;
   }
@@ -3402,7 +3409,7 @@ if (!__Pyx_RefNanny) {
       Py_FatalError("failed to import 'refnanny' module");
 }
 #endif
-  __Pyx_RefNannySetupContext("__Pyx_PyMODINIT_FUNC PyInit_rsa(void)", 0);
+  __Pyx_RefNannySetupContext("__Pyx_PyMODINIT_FUNC PyInit_factors(void)", 0);
   if (__Pyx_check_binary_version(__PYX_LIMITED_VERSION_HEX, __Pyx_get_runtime_version(), CYTHON_COMPILING_IN_LIMITED_API) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #ifdef __Pxy_PyFrame_Initialize_Offsets
   __Pxy_PyFrame_Initialize_Offsets();
@@ -3440,14 +3447,14 @@ if (!__Pyx_RefNanny) {
   #if PY_MAJOR_VERSION < 3 && (__PYX_DEFAULT_STRING_ENCODING_IS_ASCII || __PYX_DEFAULT_STRING_ENCODING_IS_DEFAULT)
   if (__Pyx_init_sys_getdefaultencoding_params() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
-  if (__pyx_module_is_main_rsa) {
+  if (__pyx_module_is_main_factors) {
     if (PyObject_SetAttr(__pyx_m, __pyx_n_s_name, __pyx_n_s_main) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   }
   #if PY_MAJOR_VERSION >= 3
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "rsa")) {
-      if (unlikely((PyDict_SetItemString(modules, "rsa", __pyx_m) < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "factors")) {
+      if (unlikely((PyDict_SetItemString(modules, "factors", __pyx_m) < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
     }
   }
   #endif
@@ -3468,164 +3475,167 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "rsa.py":1
+  /* "factors.py":3
+ * #!/usr/bin/python3
+ * #cython: language_level=3
  * from math import *             # <<<<<<<<<<<<<<
  * from sys import *
  * 
  */
-  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 3, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_n_s_);
   __Pyx_GIVEREF(__pyx_n_s_);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_)) __PYX_ERR(0, 1, __pyx_L1_error);
-  __pyx_t_3 = __Pyx_Import(__pyx_n_s_math, __pyx_t_2, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_)) __PYX_ERR(0, 3, __pyx_L1_error);
+  __pyx_t_3 = __Pyx_Import(__pyx_n_s_math, __pyx_t_2, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 3, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__pyx_import_star(__pyx_t_3) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__pyx_import_star(__pyx_t_3) < 0) __PYX_ERR(0, 3, __pyx_L1_error);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "rsa.py":2
+  /* "factors.py":4
+ * #cython: language_level=3
  * from math import *
  * from sys import *             # <<<<<<<<<<<<<<
  * 
  * def primes(number):
  */
-  __pyx_t_3 = PyList_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 2, __pyx_L1_error)
+  __pyx_t_3 = PyList_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(__pyx_n_s_);
   __Pyx_GIVEREF(__pyx_n_s_);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_3, 0, __pyx_n_s_)) __PYX_ERR(0, 2, __pyx_L1_error);
-  __pyx_t_2 = __Pyx_Import(__pyx_n_s_sys, __pyx_t_3, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 2, __pyx_L1_error)
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_3, 0, __pyx_n_s_)) __PYX_ERR(0, 4, __pyx_L1_error);
+  __pyx_t_2 = __Pyx_Import(__pyx_n_s_sys, __pyx_t_3, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (__pyx_import_star(__pyx_t_2) < 0) __PYX_ERR(0, 2, __pyx_L1_error);
+  if (__pyx_import_star(__pyx_t_2) < 0) __PYX_ERR(0, 4, __pyx_L1_error);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "rsa.py":4
+  /* "factors.py":6
  * from sys import *
  * 
  * def primes(number):             # <<<<<<<<<<<<<<
  *         primenums = []
  *         if number % 2 == 0:
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_3rsa_1primes, 0, __pyx_n_s_primes, NULL, __pyx_n_s_rsa, __pyx_d, ((PyObject *)__pyx_codeobj__3)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 4, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7factors_1primes, 0, __pyx_n_s_primes, NULL, __pyx_n_s_factors, __pyx_d, ((PyObject *)__pyx_codeobj__3)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 6, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_primes, __pyx_t_2) < 0) __PYX_ERR(0, 4, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_primes, __pyx_t_2) < 0) __PYX_ERR(0, 6, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "rsa.py":20
+  /* "factors.py":22
  *         return (primenums)
  * 
  * if __name__ == "__main__":             # <<<<<<<<<<<<<<
  *         if (len(argv) != 2):
- *             print("Usage: {} <file>".format(argv[0]))
+ *                 print("Usage: {} <file>".format(argv[0]))
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_name); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 20, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_name); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 22, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_t_2, __pyx_n_s_main, Py_EQ)); if (unlikely((__pyx_t_4 < 0))) __PYX_ERR(0, 20, __pyx_L1_error)
+  __pyx_t_4 = (__Pyx_PyUnicode_Equals(__pyx_t_2, __pyx_n_u_main, Py_EQ)); if (unlikely((__pyx_t_4 < 0))) __PYX_ERR(0, 22, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (__pyx_t_4) {
 
-    /* "rsa.py":21
+    /* "factors.py":23
  * 
  * if __name__ == "__main__":
  *         if (len(argv) != 2):             # <<<<<<<<<<<<<<
- *             print("Usage: {} <file>".format(argv[0]))
- *             exit(1)
+ *                 print("Usage: {} <file>".format(argv[0]))
+ *                 exit(1)
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_argv); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 21, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_argv); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 23, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_5 = PyObject_Length(__pyx_t_2); if (unlikely(__pyx_t_5 == ((Py_ssize_t)-1))) __PYX_ERR(0, 21, __pyx_L1_error)
+    __pyx_t_5 = PyObject_Length(__pyx_t_2); if (unlikely(__pyx_t_5 == ((Py_ssize_t)-1))) __PYX_ERR(0, 23, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_4 = (__pyx_t_5 != 2);
     if (__pyx_t_4) {
 
-      /* "rsa.py":22
+      /* "factors.py":24
  * if __name__ == "__main__":
  *         if (len(argv) != 2):
- *             print("Usage: {} <file>".format(argv[0]))             # <<<<<<<<<<<<<<
- *             exit(1)
- *         file = open(argv[1], "r")
+ *                 print("Usage: {} <file>".format(argv[0]))             # <<<<<<<<<<<<<<
+ *                 exit(1)
+ *         file = open(argv[1], 'r')
  */
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Usage_file, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 22, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_Usage_file, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 24, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_argv); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 22, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_argv); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 24, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_6 = __Pyx_GetItemInt(__pyx_t_3, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 22, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_GetItemInt(__pyx_t_3, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 24, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 22, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 24, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __pyx_t_6 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 22, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 24, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-      /* "rsa.py":23
+      /* "factors.py":25
  *         if (len(argv) != 2):
- *             print("Usage: {} <file>".format(argv[0]))
- *             exit(1)             # <<<<<<<<<<<<<<
- *         file = open(argv[1], "r")
+ *                 print("Usage: {} <file>".format(argv[0]))
+ *                 exit(1)             # <<<<<<<<<<<<<<
+ *         file = open(argv[1], 'r')
  *         for line in file:
  */
-      __pyx_t_6 = __Pyx_PyObject_Call(__pyx_builtin_exit, __pyx_tuple__4, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 23, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_Call(__pyx_builtin_exit, __pyx_tuple__4, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 25, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-      /* "rsa.py":21
+      /* "factors.py":23
  * 
  * if __name__ == "__main__":
  *         if (len(argv) != 2):             # <<<<<<<<<<<<<<
- *             print("Usage: {} <file>".format(argv[0]))
- *             exit(1)
+ *                 print("Usage: {} <file>".format(argv[0]))
+ *                 exit(1)
  */
     }
 
-    /* "rsa.py":24
- *             print("Usage: {} <file>".format(argv[0]))
- *             exit(1)
- *         file = open(argv[1], "r")             # <<<<<<<<<<<<<<
+    /* "factors.py":26
+ *                 print("Usage: {} <file>".format(argv[0]))
+ *                 exit(1)
+ *         file = open(argv[1], 'r')             # <<<<<<<<<<<<<<
  *         for line in file:
  *                 intline = int(line)
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_argv); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 24, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_argv); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 26, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_3 = __Pyx_GetItemInt(__pyx_t_6, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 24, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_GetItemInt(__pyx_t_6, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 26, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 24, __pyx_L1_error)
+    __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 26, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_GIVEREF(__pyx_t_3);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_3)) __PYX_ERR(0, 24, __pyx_L1_error);
-    __Pyx_INCREF(__pyx_n_s_r);
-    __Pyx_GIVEREF(__pyx_n_s_r);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_n_s_r)) __PYX_ERR(0, 24, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_3)) __PYX_ERR(0, 26, __pyx_L1_error);
+    __Pyx_INCREF(__pyx_n_u_r);
+    __Pyx_GIVEREF(__pyx_n_u_r);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_n_u_r)) __PYX_ERR(0, 26, __pyx_L1_error);
     __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_open, __pyx_t_6, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 24, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_open, __pyx_t_6, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 26, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    if (PyDict_SetItem(__pyx_d, __pyx_n_s_file, __pyx_t_3) < 0) __PYX_ERR(0, 24, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_d, __pyx_n_s_file, __pyx_t_3) < 0) __PYX_ERR(0, 26, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "rsa.py":25
- *             exit(1)
- *         file = open(argv[1], "r")
+    /* "factors.py":27
+ *                 exit(1)
+ *         file = open(argv[1], 'r')
  *         for line in file:             # <<<<<<<<<<<<<<
  *                 intline = int(line)
  *                 primelst = (primes(intline))[0]
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_file); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 25, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_file); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 27, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     if (likely(PyList_CheckExact(__pyx_t_3)) || PyTuple_CheckExact(__pyx_t_3)) {
       __pyx_t_6 = __pyx_t_3; __Pyx_INCREF(__pyx_t_6);
       __pyx_t_5 = 0;
       __pyx_t_7 = NULL;
     } else {
-      __pyx_t_5 = -1; __pyx_t_6 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 25, __pyx_L1_error)
+      __pyx_t_5 = -1; __pyx_t_6 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 27, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_7 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 25, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 27, __pyx_L1_error)
     }
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     for (;;) {
@@ -3634,28 +3644,28 @@ if (!__Pyx_RefNanny) {
           {
             Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_6);
             #if !CYTHON_ASSUME_SAFE_MACROS
-            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 25, __pyx_L1_error)
+            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 27, __pyx_L1_error)
             #endif
             if (__pyx_t_5 >= __pyx_temp) break;
           }
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_3 = PyList_GET_ITEM(__pyx_t_6, __pyx_t_5); __Pyx_INCREF(__pyx_t_3); __pyx_t_5++; if (unlikely((0 < 0))) __PYX_ERR(0, 25, __pyx_L1_error)
+          __pyx_t_3 = PyList_GET_ITEM(__pyx_t_6, __pyx_t_5); __Pyx_INCREF(__pyx_t_3); __pyx_t_5++; if (unlikely((0 < 0))) __PYX_ERR(0, 27, __pyx_L1_error)
           #else
-          __pyx_t_3 = __Pyx_PySequence_ITEM(__pyx_t_6, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 25, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_PySequence_ITEM(__pyx_t_6, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 27, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
           #endif
         } else {
           {
             Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_6);
             #if !CYTHON_ASSUME_SAFE_MACROS
-            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 25, __pyx_L1_error)
+            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 27, __pyx_L1_error)
             #endif
             if (__pyx_t_5 >= __pyx_temp) break;
           }
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_6, __pyx_t_5); __Pyx_INCREF(__pyx_t_3); __pyx_t_5++; if (unlikely((0 < 0))) __PYX_ERR(0, 25, __pyx_L1_error)
+          __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_6, __pyx_t_5); __Pyx_INCREF(__pyx_t_3); __pyx_t_5++; if (unlikely((0 < 0))) __PYX_ERR(0, 27, __pyx_L1_error)
           #else
-          __pyx_t_3 = __Pyx_PySequence_ITEM(__pyx_t_6, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 25, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_PySequence_ITEM(__pyx_t_6, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 27, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
           #endif
         }
@@ -3665,39 +3675,40 @@ if (!__Pyx_RefNanny) {
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 25, __pyx_L1_error)
+            else __PYX_ERR(0, 27, __pyx_L1_error)
           }
           break;
         }
         __Pyx_GOTREF(__pyx_t_3);
       }
-      if (PyDict_SetItem(__pyx_d, __pyx_n_s_line, __pyx_t_3) < 0) __PYX_ERR(0, 25, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_d, __pyx_n_s_line, __pyx_t_3) < 0) __PYX_ERR(0, 27, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-      /* "rsa.py":26
- *         file = open(argv[1], "r")
+      /* "factors.py":28
+ *         file = open(argv[1], 'r')
  *         for line in file:
  *                 intline = int(line)             # <<<<<<<<<<<<<<
  *                 primelst = (primes(intline))[0]
  *                 print("{}={}*{}".format(intline, intline//primelst, primelst))
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_line); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 26, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_line); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 28, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_2 = __Pyx_PyNumber_Int(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 26, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyNumber_Int(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 28, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (PyDict_SetItem(__pyx_d, __pyx_n_s_intline, __pyx_t_2) < 0) __PYX_ERR(0, 26, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_d, __pyx_n_s_intline, __pyx_t_2) < 0) __PYX_ERR(0, 28, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "rsa.py":27
+      /* "factors.py":29
  *         for line in file:
  *                 intline = int(line)
  *                 primelst = (primes(intline))[0]             # <<<<<<<<<<<<<<
  *                 print("{}={}*{}".format(intline, intline//primelst, primelst))
+ *         file.close()
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_primes); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 27, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_primes); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 29, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_intline); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 27, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_intline); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 29, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __pyx_t_9 = NULL;
       __pyx_t_10 = 0;
@@ -3718,34 +3729,35 @@ if (!__Pyx_RefNanny) {
         __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_10, 1+__pyx_t_10);
         __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 27, __pyx_L1_error)
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 29, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       }
-      __pyx_t_3 = __Pyx_GetItemInt(__pyx_t_2, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 27, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_GetItemInt(__pyx_t_2, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 29, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      if (PyDict_SetItem(__pyx_d, __pyx_n_s_primelst, __pyx_t_3) < 0) __PYX_ERR(0, 27, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_d, __pyx_n_s_primelst, __pyx_t_3) < 0) __PYX_ERR(0, 29, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-      /* "rsa.py":28
+      /* "factors.py":30
  *                 intline = int(line)
  *                 primelst = (primes(intline))[0]
  *                 print("{}={}*{}".format(intline, intline//primelst, primelst))             # <<<<<<<<<<<<<<
+ *         file.close()
  */
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s__5, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 28, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u__5, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 30, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_intline); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 28, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_intline); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 30, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
-      __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_intline); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 28, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_intline); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 30, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
-      __Pyx_GetModuleGlobalName(__pyx_t_11, __pyx_n_s_primelst); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 28, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_11, __pyx_n_s_primelst); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 30, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
-      __pyx_t_12 = PyNumber_FloorDivide(__pyx_t_9, __pyx_t_11); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 28, __pyx_L1_error)
+      __pyx_t_12 = PyNumber_FloorDivide(__pyx_t_9, __pyx_t_11); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 30, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_12);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-      __Pyx_GetModuleGlobalName(__pyx_t_11, __pyx_n_s_primelst); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 28, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_11, __pyx_n_s_primelst); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 30, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
       __pyx_t_9 = NULL;
       __pyx_t_10 = 0;
@@ -3768,18 +3780,18 @@ if (!__Pyx_RefNanny) {
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-        if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 28, __pyx_L1_error)
+        if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 30, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       }
-      __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 28, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 30, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "rsa.py":25
- *             exit(1)
- *         file = open(argv[1], "r")
+      /* "factors.py":27
+ *                 exit(1)
+ *         file = open(argv[1], 'r')
  *         for line in file:             # <<<<<<<<<<<<<<
  *                 intline = int(line)
  *                 primelst = (primes(intline))[0]
@@ -3787,19 +3799,34 @@ if (!__Pyx_RefNanny) {
     }
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-    /* "rsa.py":20
+    /* "factors.py":31
+ *                 primelst = (primes(intline))[0]
+ *                 print("{}={}*{}".format(intline, intline//primelst, primelst))
+ *         file.close()             # <<<<<<<<<<<<<<
+ */
+    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_file); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 31, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_close); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 31, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __pyx_t_6 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 31, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+
+    /* "factors.py":22
  *         return (primenums)
  * 
  * if __name__ == "__main__":             # <<<<<<<<<<<<<<
  *         if (len(argv) != 2):
- *             print("Usage: {} <file>".format(argv[0]))
+ *                 print("Usage: {} <file>".format(argv[0]))
  */
   }
 
-  /* "rsa.py":1
- * from math import *             # <<<<<<<<<<<<<<
- * from sys import *
- * 
+  /* "factors.py":1
+ * #!/usr/bin/python3             # <<<<<<<<<<<<<<
+ * #cython: language_level=3
+ * from math import *
  */
   __pyx_t_6 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
@@ -3819,7 +3846,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_XDECREF(__pyx_t_12);
   if (__pyx_m) {
     if (__pyx_d && stringtab_initialized) {
-      __Pyx_AddTraceback("init rsa", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init factors", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     #if !CYTHON_USE_MODULE_STATE
     Py_CLEAR(__pyx_m);
@@ -3833,7 +3860,7 @@ if (!__Pyx_RefNanny) {
     }
     #endif
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init rsa");
+    PyErr_SetString(PyExc_ImportError, "init factors");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -6514,6 +6541,12 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_CallOneArg(PyObject *func, PyObjec
     return __Pyx_PyObject_FastCall(func, args+1, 1 | __Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET);
 }
 
+/* PyObjectCallNoArg */
+static CYTHON_INLINE PyObject* __Pyx_PyObject_CallNoArg(PyObject *func) {
+    PyObject *arg[2] = {NULL, NULL};
+    return __Pyx_PyObject_FastCall(func, arg + 1, 0 | __Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET);
+}
+
 /* CLineInTraceback */
 #ifndef CYTHON_CLINE_IN_TRACEBACK
 static int __Pyx_CLineForTraceback(PyThreadState *tstate, int c_line) {
@@ -6858,9 +6891,9 @@ static int __Pyx_main(int argc, wchar_t **argv)
         Py_SetProgramName(argv[0]);
 #endif
     #if PY_MAJOR_VERSION < 3
-    if (PyImport_AppendInittab("rsa", initrsa) < 0) return 1;
+    if (PyImport_AppendInittab("factors", initfactors) < 0) return 1;
     #else
-    if (PyImport_AppendInittab("rsa", PyInit_rsa) < 0) return 1;
+    if (PyImport_AppendInittab("factors", PyInit_factors) < 0) return 1;
     #endif
 #if PY_VERSION_HEX < 0x03080000
     Py_Initialize();
@@ -6894,8 +6927,8 @@ static int __Pyx_main(int argc, wchar_t **argv)
 #endif
     {
       PyObject* m = NULL;
-      __pyx_module_is_main_rsa = 1;
-      m = PyImport_ImportModule("rsa");
+      __pyx_module_is_main_factors = 1;
+      m = PyImport_ImportModule("factors");
       if (!m && PyErr_Occurred()) {
           PyErr_Print();
           #if PY_MAJOR_VERSION < 3

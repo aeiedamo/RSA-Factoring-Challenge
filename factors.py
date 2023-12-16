@@ -1,7 +1,7 @@
 #!/usr/bin/python3
+#cython: language_level=3
 from math import *
 from sys import *
-import py_compile
 
 def primes(number):
         primenums = []
@@ -21,10 +21,11 @@ def primes(number):
 
 if __name__ == "__main__":
         if (len(argv) != 2):
-            print("Usage: {} <file>".format(argv[0]))
-            exit(1)
-        file = open(argv[1], "r")
+                print("Usage: {} <file>".format(argv[0]))
+                exit(1)
+        file = open(argv[1], 'r')
         for line in file:
                 intline = int(line)
                 primelst = (primes(intline))[0]
                 print("{}={}*{}".format(intline, intline//primelst, primelst))
+        file.close()
