@@ -1,7 +1,5 @@
-#!/usr/bin/python3
 from math import *
 from sys import *
-import py_compile
 
 def primes(number):
         primenums = []
