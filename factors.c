@@ -1,3 +1,4 @@
+#define _USE_MATH_DEFINES
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -13,6 +14,7 @@ size_t find_factor(size_t number)
         for (i = 3; i < (size_t)sqrt(number); i+=2)
                 if (number % i == 0)
                         return (i);
+        return (1);
 }
 
 int main(int argc, char **argv)
@@ -40,7 +42,7 @@ int main(int argc, char **argv)
                         *newline = '\0';
                 number = atoi(lineptr);
                 factor = find_factor(number);
-                printf("%s=%zu*%zu\n", lineptr, number/factor, factor);
+                printf("%s=%ld*%ld\n", lineptr, number/factor, factor);
         }
         fclose(f);
         return (0);
