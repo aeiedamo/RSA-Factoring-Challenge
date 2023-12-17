@@ -1,29 +1,27 @@
-#define _GNU_SOURCE
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <math.h>
 
 size_t find_factor(size_t number)
 {
-        size_t max = (size_t)sqrt(number) + 1;
-        size_t counter;
-        size_t list[100] = {0};
+        size_t i;
 
         if (number % 2 == 0)
                 return (2);
-        for (counter = 3; counter < max; counter += 2)
-        {
-                if (number % counter == 0)
-                        return (counter);
-        }
-        
+
+        for (i = 3; i < (size_t)sqrt(number); i+=2)
+                if (number % i == 0)
+                        return (i);
 }
 
 int main(int argc, char **argv)
 {
         FILE *f;
-        char *lineptr = NULL;
-        size_t n, size, number, factor;
+        int len = 255;
+        char lineptr[255] = {0};
+        size_t number, factor;
+        char *newline;
 
         if (argc != 2)
         {
@@ -36,12 +34,14 @@ int main(int argc, char **argv)
                 fprintf(stderr, "%s: %s not found\n", argv[0], argv[1]);
                 exit(EXIT_FAILURE);
         }
-        while ((size = getline(&lineptr, &n, f)) != -1)
+        while (fgets(lineptr, len, f))
         {
+                if ((newline = strchr(lineptr, '\n')))
+                        *newline = '\0';
                 number = atoi(lineptr);
                 factor = find_factor(number);
-                printf("%s=%d*%zu", lineptr, number/factor, factor);
+                printf("%s=%zu*%zu\n", lineptr, number/factor, factor);
         }
-        printf("\n");
+        fclose(f);
         return (0);
 }
