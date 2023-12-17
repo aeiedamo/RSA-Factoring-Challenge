@@ -11,7 +11,7 @@ size_t find_factor(size_t number)
         if (number % 2 == 0)
                 return (2);
 
-        for (i = 3; i < (size_t)sqrt(number); i+=2)
+        for (i = 3; i < ((size_t)sqrt(number) + 1); i+=2)
                 if (number % i == 0)
                         return (i);
         return (1);
