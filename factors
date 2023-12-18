@@ -1,0 +1,32 @@
+#!/usr/bin/python3
+from math import *
+from sys import *
+
+
+def primal(n, primes):
+        if (n > 2 and 2 not in primes):
+                primes.append(2)
+        if (n > 3 and 3 not in primes):
+                primes.append(3)
+        for i in range(primes[-1], n, 2):
+                for j in primes:
+                        if (i % j == 0):
+                                break
+                        elif (j == primes[-1]):
+                                primes.append(i)
+        return (primes)
+
+def find_factor(n):
+        if (n % 2 == 0):
+                return (2)
+        for i in range(3, isqrt(n) + 1, 2):
+                if (n % i == 0):
+                        return (i)
+
+if __name__=='__main__':
+        f = open(argv[1],"r")
+        for line in f:
+                n = int(line)
+                q = find_factor(n)
+                p = n // q
+                print("{:d}={:d}*{:d}".format(n, p, q))
