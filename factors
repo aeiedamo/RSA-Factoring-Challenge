@@ -16,8 +16,9 @@ def factorize(number):
         return (5)
     primes = [3, 7, 11, 19]
     for i in primes:
-        if (ten_times(number, i) != -1):
-            return (ten_times(number, i))
+        factor = ten_times(number, i)
+        if (factor != -1):
+            return (factor)
 
 if __name__=='__main__':
     f = open(argv[1], "r")
