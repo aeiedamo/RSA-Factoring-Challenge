@@ -14,7 +14,11 @@ def factorize(number):
         return (2)
     if (number % 5 == 0):
         return (5)
-    primes = [3, 7, 11, 19]
+    modulo = number % 10
+    if (modulo == 1 or modulo == 9):
+        primes = [11, 3, 7, 19]
+    elif (modulo == 3 or modulo == 7):
+        primes = [3, 7]
     for i in primes:
         factor = ten_times(number, i)
         if (factor != -1):
