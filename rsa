@@ -26,3 +26,4 @@ if __name__=='__main__':
         q = factorize(n)
         p = n // q
         print("{}={}*{}".format(n, p, q))
+    f.close()
