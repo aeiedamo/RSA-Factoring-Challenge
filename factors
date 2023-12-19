@@ -16,7 +16,7 @@ def factorize(number):
         return (5)
     modulo = number % 10
     if (modulo == 1 or modulo == 9):
-        primes = [3, 7, 11]
+        primes = [11, 3, 7, 19]
     elif (modulo == 3 or modulo == 7):
         primes = [3, 7]
     for i in primes:
