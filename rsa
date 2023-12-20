@@ -27,10 +27,13 @@ def factorize(number):
             return (factor)
 
 if __name__=='__main__':
-    f = open(argv[1], "r")
-    for line in f:
-        n = int(line)
-        q = factorize(n)
-        p = n // q
-        print("{}={}*{}".format(n, p, q))
-    f.close()
+    if (len(argv) != 2):
+        print("Usage: factors <file>")
+        exit(-1)
+    with open(argv[1], 'r') as f:
+        for line in f:
+            n = int(line)
+            q = factorize(n)
+            p = n // q
+            print("{:d}={:d}*{:d}".format(n, p, q))
+        f.close()
