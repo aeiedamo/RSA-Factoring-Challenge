@@ -6,14 +6,8 @@ from sys import *
 def factorize(number):
     if (number % 2 == 0):
         return (2)
-    elif (number % 3 == 0):
-        return (3)
-    elif (number % 5 == 0):
-        return (5)
-    elif (number % 7 == 0):
-        return (7) 
     max = isqrt(number) + 1
-    for i in range(11, max, 2):
+    for i in range(3, max, 2):
         if (number % i == 0):
             return(i)
 
