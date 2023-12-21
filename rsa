@@ -3,8 +3,6 @@ from math import *
 from sys import *
 
 def ten_times(number, first_prime):
-    if (first_prime == 1 or first_prime == 9):
-        first_prime += 10
     max = isqrt(number) + 1
     for i in range(first_prime, max, 10):
         if (number % i == 0):
@@ -16,7 +14,7 @@ def factorize(number):
         return (2)
     if (number % 5 == 0):
         return (5)
-    primes = [3, 7, 1, 9]
+    primes = [3, 7, 11, 19]
     for i in primes:
         factor = ten_times(number, i)
         if (factor != -1):
