@@ -10,12 +10,16 @@ def ten_times(number, first_prime):
     return (-1)
 
 def factorize(number):
+    if (number % 2 == 0):
+        return (2, number // 2)
+    elif (number % 5 == 0):
+        return (5, number // 5)
     primes = [3, 7, 11, 19]
     for i in primes:
         factor = ten_times(number, i)
         if (factor != -1):
-            return (factor)
-    return (1)
+            return (factor, number // factor)
+    return (1, number)
 
 if __name__=='__main__':
     if (len(argv) != 2):
@@ -24,7 +28,6 @@ if __name__=='__main__':
     with open(argv[1], 'r') as f:
         for line in f:
             n = int(line)
-            q = factorize(n)
-            p = n // q
+            q, p = factorize(n)
             print("{:d}={:d}*{:d}".format(n, p, q))
     f.close()
