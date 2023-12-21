@@ -1,3 +1,0 @@
-#!/bin/bash
-gcc ./factors.c -o app -lm
-./app $1
