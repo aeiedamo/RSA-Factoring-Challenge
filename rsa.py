@@ -2,13 +2,26 @@
 from math import *
 from sys import *
 
+def ten_times(number, first_prime):
+    if (first_prime == 1 or first_prime == 9):
+        first_prime += 10
+    max = isqrt(number) + 1
+    for i in range(first_prime, max, 10):
+        if (number % i == 0):
+            return (i)
+    return (-1)
+
 def factorize(number):
     if (number % 2 == 0):
         return (2)
-    max = isqrt(number) + 1
-    for i in range(3, max, 2):
-        if (number % i == 0):
-            return (i)
+    if (number % 5 == 0):
+        return (5)
+    primes = [3, 7, 1, 9]
+    for i in primes:
+        factor = ten_times(number, i)
+        if (factor != -1):
+            return (factor)
+    return (1)
 
 if __name__=='__main__':
     if (len(argv) != 2):
@@ -20,4 +33,4 @@ if __name__=='__main__':
             q = factorize(n)
             p = n // q
             print("{:d}={:d}*{:d}".format(n, p, q))
-    f.close()
+        f.close()
