@@ -20,4 +20,4 @@ if __name__=='__main__':
             q = factorize(n)
             p = n // q
             print("{:d}={:d}*{:d}".format(n, p, q))
-        f.close()
+    f.close()
