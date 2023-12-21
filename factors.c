@@ -20,8 +20,6 @@ int main(int argc, char **argv)
     size_t number, factor, size;
     FILE *f;
     char line[100] = {0};
-    mpz_t largenumber;
-    mpz_init(largenumber);
 
     if (argc != 2)
     {
